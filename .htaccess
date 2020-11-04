@@ -1,56 +1,33 @@
+# BEGIN Cache-Control Headers
+<IfModule mod_headers.c>
+<FilesMatch "\.(ico|jpe?g|png|gif|swf|css|gz)$">
+Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
+<FilesMatch "\.(js)$">
+Header set Cache-Control "max-age=2592000, private"
+</FilesMatch>
+<filesMatch "\.(html|htm)$">
+Header set Cache-Control "max-age=7200, public"
+</filesMatch>
+# Enleve le cache pour les ressources dynamiques
+<FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+Header unset Cache-Control
+</FilesMatch>
+</IfModule>
+# END Cache-Control Headers
+
+# BEGIN Expires Headers
 <IfModule mod_expires.c>
 ExpiresActive On
-ExpiresDefault "access plus 1 month"
-
-ExpiresByType text/html "access plus 0 seconds"
-ExpiresByType text/xml "access plus 0 seconds"
-ExpiresByType application/xml "access plus 0 seconds"
-ExpiresByType application/json "access plus 0 seconds"
-ExpiresByType application/pdf "access plus 0 seconds"
-
-ExpiresByType application/rss+xml "access plus 1 hour"
-ExpiresByType application/atom+xml "access plus 1 hour"
-
-ExpiresByType application/x-font-ttf "access plus 1 month"
-ExpiresByType font/opentype "access plus 1 month"
-ExpiresByType application/x-font-woff "access plus 1 month"
-ExpiresByType application/x-font-woff2 "access plus 1 month"
-ExpiresByType image/svg+xml "access plus 1 month"
-ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
-
-ExpiresByType image/jpg "access plus 1 month"
-ExpiresByType image/jpeg "access plus 1 month"
-ExpiresByType image/gif "access plus 1 month"
-ExpiresByType image/png "access plus 1 month"
-
-ExpiresByType video/ogg "access plus 1 month"
-ExpiresByType audio/ogg "access plus 1 month"
-ExpiresByType video/mp4 "access plus 1 month"
-ExpiresByType video/webm "access plus 1 month"
-
-ExpiresByType text/css "access plus 6 month"
-ExpiresByType application/javascript "access plus 6 month"
-
-ExpiresByType application/x-shockwave-flash "access plus 1 week"
-ExpiresByType image/x-icon "access plus 1 week"
-
+ExpiresByType image/jpg "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/gif "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/pdf "access plus 1 month"
+ExpiresByType text/x-javascript "access plus 1 month"
+ExpiresByType application/x-shockwave-flash "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresDefault "access plus 2 days"
 </IfModule>
-
-# En-têtes
-Header unset ETag
-FileETag None
-
-<ifModule mod_headers.c>
-<filesMatch ".(ico|jpe?g|png|gif|swf)$">
-    Header set Cache-Control "public"
-</filesMatch>
-<filesMatch ".(css)$">
-    Header set Cache-Control "public"
-</filesMatch>
-<filesMatch ".(js)$">
-    Header set Cache-Control "private"
-</filesMatch>
-<filesMatch ".(x?html?|php)$">
-    Header set Cache-Control "private, must-revalidate"
-</filesMatch>
-</ifModule>
+# END Expires Headers
