@@ -13,6 +13,10 @@ button {
     outline: none!important;
 }
 
+header{
+  width: 100%;
+}
+
 a:hover {
     text-decoration: none;
     cursor: pointer;
@@ -54,6 +58,10 @@ a:hover {
 
 .bloc-sm {
     padding: 20px 50px;
+}
+
+.image-phrase {
+    width: 100%;
 }
 
 .bg-center,
